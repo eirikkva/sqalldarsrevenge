@@ -7,11 +7,11 @@ import io.github.cdimascio.dotenv.dotenv
 import kotlinx.coroutines.delay
 
 suspend fun main() {
-    val client = Kord("OTIxOTI5OTU3NjU0MDAzNzQy.Yb6ELg.4KyJesTp4CCuJjh-tvfbdLECxz4")
+    val dotenv = dotenv()
+    val botToken = dotenv["DISCORD_BOT_TOKEN"]
+    val client = Kord(botToken)
     val pingPong = ReactionEmoji.Unicode("\uD83C\uDFD3")
     val grin = ReactionEmoji.Unicode("\uD83D\uDE01")
-
-    val dotenv = dotenv()
 
     val gameServer = object {
         val INSTANCE_ID = dotenv["INSTANCE_ID"]
