@@ -1,0 +1,3 @@
+rootProject.name = 'sqalldarsrevenge'
+include('discord')
+include('server')

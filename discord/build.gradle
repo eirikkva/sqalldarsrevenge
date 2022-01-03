@@ -1,0 +1,17 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+}
+
+group 'com.sqalldarsrevenge.discord'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation("dev.kord:kord-core:0.8.0-M8")
+    implementation("aws.sdk.kotlin:ec2:0.9.4-beta")
+    implementation("io.github.cdimascio:dotenv-kotlin:6.2.2")
+}
