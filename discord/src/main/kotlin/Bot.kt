@@ -1,3 +1,5 @@
+package com.sqalldarsrevenge.discord
+
 import com.sqalldarsrevenge.discord.aws.InstanceManager
 import dev.kord.core.Kord
 import dev.kord.core.entity.ReactionEmoji
@@ -49,6 +51,7 @@ suspend fun main() {
             }
 
             message.channel.createMessage("Stopped ${gameServer.NAME}")
+            println("Stopped ${gameServer.NAME}")
         }
 
         if (message.content.startsWith("?state")) {
