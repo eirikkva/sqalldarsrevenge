@@ -7,3 +7,4 @@ tmp
 .gradle
 .env
 .ssh
+dist

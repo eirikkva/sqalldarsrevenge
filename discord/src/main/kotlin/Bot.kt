@@ -9,7 +9,10 @@ import io.github.cdimascio.dotenv.dotenv
 import kotlinx.coroutines.delay
 
 suspend fun main() {
-    val dotenv = dotenv()
+    val dotenv = dotenv {
+        ignoreIfMalformed = true
+        ignoreIfMissing = true
+    }
     val botToken = dotenv["DISCORD_BOT_TOKEN"]
     val client = Kord(botToken)
     val pingPong = ReactionEmoji.Unicode("\uD83C\uDFD3")
@@ -19,6 +22,12 @@ suspend fun main() {
         val INSTANCE_ID = dotenv["INSTANCE_ID"]
         val NAME = dotenv["SERVER_NAME"]
         val PASSWORD = dotenv["SERVER_PASSWORD"]
+    }
+
+    println("Discord bot is running!")
+    for (e in dotenv.entries()) {
+        println(e.key)
+        println(e.value)
     }
 
     client.on<MessageCreateEvent> {
@@ -68,6 +77,7 @@ suspend fun main() {
         }
 
         if (message.content == "!ping") {
+            println("Received ping! :D - sending pong!")
             val response = message.channel.createMessage("Pong!")
             response.addReaction(pingPong)
 
