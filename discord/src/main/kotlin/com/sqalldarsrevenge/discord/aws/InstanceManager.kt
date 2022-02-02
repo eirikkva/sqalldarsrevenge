@@ -2,6 +2,7 @@ package com.sqalldarsrevenge.discord.aws
 
 import aws.sdk.kotlin.services.ec2.Ec2Client
 import aws.sdk.kotlin.services.ec2.model.*
+import aws.smithy.kotlin.runtime.client.SdkLogMode
 import kotlinx.coroutines.delay
 
 class Ec2Instance(val id: String, val status: String?, val ip: String?)
@@ -55,10 +56,14 @@ class InstanceManager(private val awsRegion: String = "eu-north-1", private val 
             instanceIds = listOf(instanceId)
             includeAllInstances = true
         }
-        return Ec2Client { region = awsRegion }.use { ec2 ->
+        return Ec2Client {
+            region = awsRegion
+            sdkLogMode = SdkLogMode.LogRequestWithBody + SdkLogMode.LogResponseWithBody
+        }.use { ec2 ->
             val status = ec2.describeInstanceStatus(request)
             return getStateFromStatusResponse(status)
         }
+
     }
 
     suspend fun describeInstance(): DescribeInstancesResponse {

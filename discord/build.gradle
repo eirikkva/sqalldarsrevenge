@@ -19,5 +19,7 @@ dependencies {
     implementation("dev.kord:kord-core:0.8.0-M8")
     implementation("aws.sdk.kotlin:ec2:0.9.4-beta")
     implementation("aws.sdk.kotlin:iam:0.9.4-beta")
+    implementation("aws.sdk.kotlin:ecr:0.9.4-beta")
     implementation("io.github.cdimascio:dotenv-kotlin:6.2.2")
+    implementation("org.slf4j:slf4j-simple:1.7.29")
 }
