@@ -18,7 +18,7 @@
 4. A container named `openra` is created by running:
     `` docker run -d -p 1234:1234 -e Name="SERVER NAME" -e Mod=ra -e ListenPort="1234" -e AdvertiseOnline="True" -e Password="SOME_PASSWORD" -e RecordReplays="True" --name openra rmoriz/openra``
 5. Then docker and the container is configured to run on startup by
-   - Creating a `docker_boot.service`:
+   - Creating a `docker_boot.service` in `/etc/systemd/system`:
       ```
      [Unit]
       Description=docker boot
@@ -32,7 +32,7 @@
      [Install]
      WantedBy=multi-user.target
      ```
-   
+
    - Enabling start after reboot and starting it
      ```
      sudo systemctl enable docker_boot.service
